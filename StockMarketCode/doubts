@@ -1,0 +1,8 @@
+Future Dates should be allowed for creating portfolio strategy
+(DONE) continuous is one day less
+check if weight is summing to 100
+(SKIP) make weight to float
+(DONE) Make the stock buy the next date if date is missing.
+
+(DONE) back doesnt work without giving the portfololio name button click
+Clear the textfields

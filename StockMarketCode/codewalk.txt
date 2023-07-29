@@ -1,0 +1,8 @@
+Dollar Cost Strategy :
+    Bar Graph
+
+
+
+GUI :
+    Explain Card Layout
+    How the control Flows between controller view model

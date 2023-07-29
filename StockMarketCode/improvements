@@ -1,0 +1,39 @@
+1. Store the tickers in alphabetical or fetch should be fast.
+2. Can we store tickers as hashmap instead of hashset.
+3. Taking input remove redundant spaces at the last ( adversary or random user ).
+4. Give option for user to go back if the userName existing is not present and then create a new account.
+5. Check if the json is in valid state at any given point of time.
+6. Testcases write more modularized strings.
+    combining or giving combinations should be easier
+7. Should not take stockName again when taking input from user.
+
+Bugs:
+1. When creating portfoio without stocks the } braces goes in a wrong position, due to which there are bugs in the get composition
+    and other things. TODO : Feature for now that user wont be able to create a portfolio withou stocks
+
+2. Not able to fetch stock price in evaluation print try again server busy.
+3. Need to append the proper live time.
+4. Add a checker while getting the date if the date is in future then ask for new date
+
+
+
+
+Selling Stock
+    List portfolio
+        Get portfolio name
+        print stocks in portfolio
+            Get stock to sell
+            Get the date to sell the stock on
+
+
+3.
+Create a new variable in portfolio that stores total money spent on that portfolio
+
+4.
+Determine the value of a portfolio on a specific date (to be exact, the end of that day).
+The value for a portfolio before the date of its first purchase would be 0, since each stock in the
+ portfolio now was purchased at a specific point in time.
+
+
+ Commission fee get input from user
+ change quantity to float across
