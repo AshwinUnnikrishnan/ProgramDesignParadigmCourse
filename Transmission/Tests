@@ -1,0 +1,210 @@
+Speed:
+    Speed cannot be negative.
+    check if low speed of gear less than high speed of gear.
+    Lower speed of gear 1 should be less than that of gear 2.   Meaning the speeds can overlap
+    Only adjacent gear ranges can overlap.
+    Ranges should be overlapping.
+    Lower Speed of first vehicle is 0 and higher speed is speed limit(cannot go faster). Constructor raises Illegal Argument Exception with appropriate message.
+    same low speed, overlapping low speeds 0 0 and 15 13
+Gear:
+    Gear {1,5} cannot be anything outside this range.
+
+Status:
+    Test for each status message
+
+
+
+Private functions :
+
+    1) To set the status to updated Speed or whatever.
+    2) To check speed range invalid argument
+
+
+
+  /**
+   * Test to check if Status 1 : Speed was changed successfully.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void testIncreaseSpeedNormal() {
+    speedCheck = new RegularManualTransmission(10, 10, 8, 12, 11, 16, 15, 18, 17, 26);
+    speedCheck = speedCheck.increaseSpeed();
+    String expectedOutput = "OK: everything is OK.";
+    assertEquals(expectedOutput, speedCheck.getStatus());
+  }
+
+
+
+  /**
+   * Test to check if Status 1 : Speed was changed successfully.
+   */
+  @Test
+  public void testSuccessfulObjectCreation() {
+    speedCheck = new RegularManualTransmission(0, 10, 8, 12, 11, 16, 15, 18, 17, 26);
+    String expectedOutput = "OK: everything is OK.";
+    assertEquals(expectedOutput, speedCheck.getStatus());
+  }
+
+
+
+  /**
+   * Test to check if Status 2 : You may increase Gear.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void testYouMayIncreaseGear() {
+    speedCheck = new RegularManualTransmission(10, 10, 8, 12, 11, 16, 15, 18, 17, 26);
+    for (int i = 0; i < 9; i++) {
+      speedCheck = speedCheck.increaseSpeed();
+    }
+    String expectedOutput = "OK: you may increase the gear.";
+    assertEquals(expectedOutput, speedCheck.getStatus());
+  }
+
+  /**
+   * Test to check if Status 4 : Cannot increase speed increase gear first.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void testCannotIncreaseSpeedWithoutIncreaseGear() {
+    speedCheck = new RegularManualTransmission(10, 5, 4, 12, 11, 16, 15, 18, 17, 26);
+    for (int i = 0; i < 6; i++) {
+      speedCheck = speedCheck.increaseSpeed();
+    }
+    String expectedOutput = "Cannot increase speed, increase gear first.";
+    assertEquals(expectedOutput, speedCheck.getStatus());
+  }
+
+  /**
+   * Test to check if speed change cannot happen without increasing the gear.
+   * Test 9 (Cannot decrease speed, decrease gear first.)
+   * Status 5
+   */
+  @Test
+  public void testTemp() {
+    //(0, 2, 2, 4, 4, 6, 6, 8, 8, 10);
+    speedCheck = new RegularManualTransmission(0, 2, 2, 4, 4, 6, 6, 8, 8, 10);
+    String expectedOutput = "Cannot decrease gear, decrease speed first.";
+    for (int i = 0; i < 4; i++) {
+      speedCheck = speedCheck.increaseSpeed();
+      speedCheck = speedCheck.increaseSpeed();
+      speedCheck = speedCheck.increaseGear();
+    }
+    speedCheck = speedCheck.increaseSpeed();
+    speedCheck = speedCheck.increaseSpeed();
+    speedCheck = speedCheck.decreaseGear();
+    assertEquals(expectedOutput, speedCheck.getStatus());
+    speedCheck = speedCheck.decreaseGear();
+
+  }
+
+  /**
+   * Test to check if Status 8 : To check reaching top speed.
+   * Need to update based on the gearUpdates.
+   */
+  @Test
+  public void testHighSpeedReached() {
+
+    //Need to write it properly.
+    speedCheck = new RegularManualTransmission(0, 1, 1, 2, 2, 3, 3, 4, 4, 5);
+    for (int i = 0; i < 4; i++) {
+      speedCheck = speedCheck.increaseSpeed();
+      speedCheck = speedCheck.increaseGear();
+    }
+    speedCheck = speedCheck.increaseSpeed();
+    speedCheck = speedCheck.increaseSpeed();
+    String expectedOutput = "Cannot increase speed. Reached maximum speed.";
+    assertEquals(expectedOutput, speedCheck.getStatus());
+  }
+
+  /**
+   * Test to check if Status 9 : To check reaching low speed.
+   */
+  @Test
+  public void testLowSpeedReached() {
+    speedCheck = new RegularManualTransmission(0, 3, 2, 5, 4, 7, 6, 9, 8, 12);
+    speedCheck = speedCheck.decreaseSpeed();
+    String expectedOutput = "Cannot decrease speed. Reached minimum speed.";
+    assertEquals(expectedOutput, speedCheck.getStatus());
+  }
+
+  /**
+   * Test to check if Status 5 : To check decreasing speed without reaching the range of lower.
+   */
+  @Test
+  public void testCannotDecreaseSpeedWithoutGearDecrease1() {
+    speedCheck = new RegularManualTransmission(0, 2, 1, 5, 4, 7, 6, 9, 8, 12);
+    speedCheck = speedCheck.increaseSpeed();
+    speedCheck = speedCheck.increaseGear();
+    speedCheck = speedCheck.decreaseSpeed();
+    String expectedOutput = "Cannot decrease speed, decrease gear first.";
+    assertEquals(expectedOutput, speedCheck.getStatus());
+  }
+
+  /**
+   * Test to check if Status 3 : To check decreasing speed without reaching the range of lower.
+   */
+  @Test
+  public void testDecreaseSpeedNormal() {
+    speedCheck = new RegularManualTransmission(0, 3, 2, 5, 4, 7, 6, 9, 8, 12);
+    speedCheck = speedCheck.increaseSpeed();
+    speedCheck = speedCheck.decreaseSpeed();
+    String expectedOutput = "OK: everything is OK.";
+    assertEquals(expectedOutput, speedCheck.getStatus());
+  }
+
+  /**
+   * Test to check if Status 1 : To check decreasing speed without reaching the range of lower.
+   */
+  @Test
+  public void testYouMayDecreaseGear() {
+    speedCheck = new RegularManualTransmission(0, 1, 1, 2, 2, 3, 3, 4, 4, 5);
+    speedCheck = speedCheck.increaseSpeed();
+    speedCheck = speedCheck.increaseGear();
+    speedCheck = speedCheck.increaseSpeed();
+    speedCheck = speedCheck.decreaseSpeed();
+
+    String expectedOutput = "OK: you may decrease the gear.";
+    assertEquals(expectedOutput, speedCheck.getStatus());
+  }
+
+  /**
+   * Test to check if Status 11 : To check decreasing gear at gear 1.
+   */
+  @Test
+  public void testDecreaseGearFromOne() {
+    speedCheck = new RegularManualTransmission(0, 3, 2, 5, 4, 7, 6, 9, 8, 12);
+    speedCheck = speedCheck.decreaseGear();
+    String expectedOutput = "Cannot decrease gear. Reached minimum gear.";
+    assertEquals(expectedOutput, speedCheck.getStatus());
+  }
+
+  /**
+   * Test to check if Status 10 : To check increasing gear at gear 5.
+   */
+  @Test
+  public void testIncreaseGearFromFive() {
+    speedCheck = new RegularManualTransmission(0, 1, 1, 2, 2, 3, 3, 4, 4, 5);
+    for (int i = 0; i < 4; i++) {
+      speedCheck = speedCheck.increaseSpeed();
+      speedCheck = speedCheck.increaseGear();
+    }
+    speedCheck = speedCheck.increaseGear();
+    String expectedOutput = "Cannot increase gear. Reached maximum gear.";
+    assertEquals(expectedOutput, speedCheck.getStatus());
+  }
+
+
+  /**
+   * testHigh speed on lower gear.
+   */
+  @Test
+  public void testHighSpeedLowerGear() {
+    //Need to write it properly.
+    speedCheck = new RegularManualTransmission(0, 1, 1, 2, 2, 3, 3, 4, 4, 4);
+    for (int i = 0; i < 3; i++) {
+      speedCheck = speedCheck.increaseSpeed();
+      speedCheck = speedCheck.increaseGear();
+    }
+    speedCheck = speedCheck.increaseSpeed();
+    speedCheck = speedCheck.increaseSpeed();
+    String expectedOutput = "Cannot increase speed. Reached maximum speed.";
+    assertEquals(expectedOutput, speedCheck.getStatus());
+  }

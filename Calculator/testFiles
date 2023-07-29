@@ -1,0 +1,70 @@
+Constructor
+    Should constructor be allowed to create with just one character, then not possible to create new objects
+    What error to be thrown when the constructor created with more than one element.
+    Negative value test for first element
+
+
+
+Inputs to check
+
+First Number
+   % +
+   % -
+   % *
+    = Return as it is
+    Above should throw exception
+   % 1
+   % 123
+   % 1123123123123123123123123 ( Integer overflow )
+   % 9232
+
+
+
+   21+  =     : Error
+   21   =      : 21
+   21+22 =
+         =
+
+
+
+
+         //    String currentResult = this.result();
+         //
+         //    //Case for first character
+         //    if (currentResult.length() == 0 ){
+         //      if( "-*/".contains(""+singleChar)){
+         //        throw new IllegalArgumentException("Operator Cannot come in the beginning");
+         //      }
+         //      if( "C=".contains(""+singleChar)){
+         //        //if 'C' or '=' return same thing as new object
+         //        return new SimpleCalculator();
+         //      }
+         //      else{
+         //        // if number then insert and return
+         //        return new SimpleCalculator(""+singleChar);
+         //      }
+         //
+         //    }
+         //
+         //
+         //    if (singleChar == '*' || singleChar == '-' || singleChar == '+' || singleChar == '=') {
+         //      String[] numbers = this.result().split("[-|+|*]");
+         //      if ( numbers.length < 2){
+         //
+         //      }
+         //
+         //
+         //
+         //      if ( this.result().length() == 0){
+         //        if (singleChar == '='){
+         //          // If '=' then it just returns whatever was previously
+         //          return new SimpleCalculator(this.result());
+         //        }
+         //        throw new IllegalArgumentException("Operator Cannot come in the beginning");
+         //      }
+         //
+         //    }
+         //    // IF C then clear the calculator
+         //    else if (singleChar == 'C'){
+         //      return new SimpleCalculator();
+         //    }

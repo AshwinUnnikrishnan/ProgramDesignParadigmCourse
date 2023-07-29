@@ -1,0 +1,21 @@
+Stores head to the number rightmost digit
+Two constructors
+    no value
+    string
+
+length ( accumulator )
+
+ShiftLeft
+ShiftRight
+        CommonnShift
+Add digit
+GetdigitAt
+
+copy
+Add
+
+
+equals
+Hashcode
+CompareTo
+toString
