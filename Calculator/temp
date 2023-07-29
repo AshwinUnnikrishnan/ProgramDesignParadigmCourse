@@ -1,2 +1,0 @@
-return new SmartCalculator(Integer.toString(Math.addExact(Integer.parseInt(sign + numbers[0]),Integer.parseInt(numbers[1]))) + singleChar, '+',secondNumber);
-return new SimpleCalculator(Integer.toString(Math.addExact(Integer.parseInt(sign + numbers[0]),Integer.parseInt(numbers[1]))) + singleChar);
